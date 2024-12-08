@@ -1,20 +1,32 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { SafeAreaView, Text, StyleSheet } from 'react-native';
+import Scoreboard from './Scoreboard'; // Mengimpor komponen Scoreboard
 
-export default function App() {
+const App = () => {
+  const [teamA, setTeamA] = useState("Tim A");
+  const [teamB, setTeamB] = useState("Tim B");
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.title}>Aplikasi Pengaturan Skor Futsal</Text>
+      {/* Menampilkan komponen Scoreboard dengan mengirimkan nama tim */}
+      <Scoreboard teamA={teamA} teamB={teamB} />
+    </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
     justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 20,
   },
 });
+
+export default App;
